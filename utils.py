@@ -21,15 +21,6 @@ def save_np(data_folder, file_name_dict):
         np.save(str(data_folder) + str(k)+ '.npy', v)
 
 
-# Decoding word from word_index
-def word_decode(word_index, token_pad):
-    # Swtich keys and values of word_index
-    word_map = {y:x for x,y in word_index.tolist().items()}
-    # Mapping word to the encoded value
-    word_feed = np.array([[x for x in y if x != 'None'] for y in np.vectorize(word_map.get)(token_pad)]).reshape(119,1)
-    return word_feed
-
-
 # Confusion Matrix: to display true positive, true negative, 
 #     false positive, and false negative values for each model
 def disp_confmat(y_true, y_pred):
