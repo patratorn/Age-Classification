@@ -44,7 +44,7 @@ def plot_roc_multiclass(y_true, y_prob, n_classes):
     roc_auc = dict()
     for i in range(n_classes):
         fpr[i], tpr[i], _ = roc_curve(y_true[:,i], y_prob[:,i])
-        roc_auc[i] = auc(fpr[i], tpr[i])
+        roc_auc[i] = roc_auc_score(fpr[i], tpr[i])
         
     # 2. Compute macro-average ROC curve and ROC area
     # Aggregate all false positive rates
