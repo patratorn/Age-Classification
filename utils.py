@@ -60,7 +60,7 @@ def plot_roc_multiclass(y_true, y_prob, n_classes):
 
     fpr["macro"] = all_fpr
     tpr["macro"] = mean_tpr
-    roc_auc["macro"] = auc(fpr["macro"], tpr["macro"])
+    roc_auc["macro"] = roc_auc_score(fpr["macro"], tpr["macro"])
     
     # Plot all ROC curves
     plt.figure()
