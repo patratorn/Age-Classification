@@ -130,11 +130,13 @@ def plot_pr_multiclass(y_true, y_prob, n_classes):
 
 
 # Method for model evaluation for multiclassification
-def evaluate_model(y_true, y_pred, y_prob):
+def evaluate_model(y_true, y_pred, y_prob, list_classes, n_classes):
     y_true = y_true
     y_pred = y_pred
     y_prob = y_prob
-    confmat = disp_confmat(y_true, y_pred)
-    fpr, tpr, auc = plot_roc_multiclass(y_true, y_prob)
-    pr, recall, avg_precision = plot_pr_multiclass(y_true, y_prob)
+    n_classes = n_classes
+    list_classes = list_classes
+    confmat = disp_confmat(y_true, y_pred, list_classes)
+    fpr, tpr, auc = plot_roc_multiclass(y_true, y_prob, n_classes)
+    pr, recall, avg_precision = plot_pr_multiclass(y_true, y_prob, n_classes)
     return confmat, fpr, tpr, auc, pr, recall, avg_precision
