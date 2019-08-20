@@ -24,16 +24,16 @@ def plot_conf_multiclass(y_true, y_pred, list_classes):
         precision = tp / (tp + fp + sys.float_info.epsilon)
         conf_mat = np.array([[tp,fn],
                              [fp,tn]])
-    
-    # Define color of confusion matrix
-    ax = axes[i]
-    ax.imshow(conf_mat, interpolation='nearest', cmap=plt.cm.Oranges)
-    
-    # Define color of annotation
-    for a, b in itertools.product(range(conf_mat.shape[0]), range(conf_mat.shape[1])):
-        ax.text(b, a, conf_mat[a, b],
-                horizontalalignment="center",
-                color="white" if conf_mat[a, b] > conf_mat.max() / 2. else "black")
+        
+        # Define color of confusion matrix
+        ax = axes[i]
+        ax.imshow(conf_mat, interpolation='nearest', cmap=plt.cm.Oranges)
+        
+        # Define color of annotation
+        for a, b in itertools.product(range(conf_mat.shape[0]), range(conf_mat.shape[1])):
+            ax.text(b, a, conf_mat[a, b],
+                    horizontalalignment="center",
+                    color="white" if conf_mat[a, b] > conf_mat.max() / 2. else "black")
     tick_marks = np.arange(2)
     ax.set_xticks(tick_marks), ax.xaxis.set_ticklabels(['1','0'])
     ax.set_yticks(tick_marks), ax.yaxis.set_ticklabels(['1','0'])
